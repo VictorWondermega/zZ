@@ -199,6 +199,7 @@ namespace za\zZ {
 			$re = '';
 			foreach($a as $k=>$v) {
 				$k = (is_numeric($k))?'i':$k;
+				$k = ((is_numeric(mb_substr($k,0,1)))?'i':'').$k;
 				if(is_array($v)) { 
 					$re .= $tab."<".$k.">\n".$this->a2x($v,$tab."\t").$tab."</".$k.">\n";
 				} else {
