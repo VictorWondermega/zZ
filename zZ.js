@@ -43,6 +43,7 @@ function zZ() {
 	this.x = new Array(); // memo
 	this.x[0] = new Object(); this.x[0].ca = 'vrs'; // IE5
 	this.m = new Array(); // modules
+	this.r = ''; // root path for za
 	this.e = new Array(); // event
 	this.done = new Array(); // events
 	
@@ -203,7 +204,7 @@ function zZ() {
 			}
 		} else {
 			if(typeof(this.loa[c])=='undefined') { // need loading
-				var tmp = document.createElement('script'); tmp.type='text/javascript'; tmp.src='/za/'+c+'/'+c+'.js?'+Math.random(); tmp.async=true; 
+				var tmp = document.createElement('script'); tmp.type='text/javascript'; tmp.src=this.r+'/za/'+c+'/'+c+'.js?'+Math.random(); tmp.async=true; 
 				document.getElementsByTagName('head')[0].appendChild(tmp);
 				this.loa[c] = new Array();
 				// initiation inside $c
