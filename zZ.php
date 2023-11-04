@@ -35,6 +35,12 @@ namespace za\zZ {
 		public $m = array(); // modules
 		public $e = array(); // event	
 		
+		public $cmn = null;
+		public $now = null;
+		
+		public $cd = '';
+		public $dd = '/';
+		
 		/////////////////////////////// 
 		// memory
 		public function mm($k=false,$v=false) {
@@ -199,11 +205,11 @@ namespace za\zZ {
 			$re = '';
 			foreach($a as $k=>$v) {
 				$k = (is_numeric($k))?'i':$k;
-				$k = ((is_numeric(mb_substr($k,0,1)))?'i':'').$k;
+				$k = ((is_numeric(substr($k,0,1)))?'i':'').$k; // mb_substr
 				if(is_array($v)) { 
 					$re .= $tab."<".$k.">\n".$this->a2x($v,$tab."\t").$tab."</".$k.">\n";
 				} else {
-					$v = preg_replace('/&[^(\w;)|(#0-9;)]/u','&amp; ',$v);
+					$v = (!is_null($v))?preg_replace('/&[^(\w;)|(#0-9;)]/u','&amp; ',$v):'';
 					$re .= $tab."<".$k.">".((strpos($v,'<')!==false||strpos($v,'>')!==false)?'<![CDATA[ '.$v.' ]]>':$v)."</".$k.">\n";
 				}
 			}
