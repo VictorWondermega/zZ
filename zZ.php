@@ -210,7 +210,7 @@ namespace za\zZ {
 					$re .= $tab."<".$k.">\n".$this->a2x($v,$tab."\t").$tab."</".$k.">\n";
 				} else {
 					$v = (!is_null($v))?preg_replace('/&[^(\w;)|(#0-9;)]/u','&amp; ',$v):'';
-					$re .= $tab."<".$k.">".((strpos($v,'<')!==false||strpos($v,'>')!==false)?'<![CDATA[ '.$v.' ]]>':$v)."</".$k.">\n";
+					$re .= $tab."<".$k.">".(!is_null($v)&&(strpos($v,'<')!==false||strpos($v,'>')!==false)?'<![CDATA[ '.$v.' ]]>':$v)."</".$k.">\n";
 				}
 			}
 		return $re;
